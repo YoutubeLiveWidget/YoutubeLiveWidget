@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">YoutubeLiveWidget</string>
+    <string name="text_title_on">ライブ配信中</string>
+    <string name="text_title_off">ライブ配信している人はいません</string>
+    <string name="text_button_prev">&#12296;</string>
+    <string name="text_button_next">&#12297;</string>
 </resources>
