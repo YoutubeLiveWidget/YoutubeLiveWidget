@@ -40,20 +40,21 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
             try {
                 Log.d("hello", "world");
                 //YoutubeAPIの初期設定
-                YouTubeRequestInitializer initializer = new YouTubeRequestInitializer("");
+                String apiKey = BuildConfig.YOUTUBE_API_KEY;
+                YouTubeRequestInitializer initializer = new YouTubeRequestInitializer(apiKey);
                 YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new GsonFactory(), request -> {}).setYouTubeRequestInitializer(initializer).setApplicationName("youtube-live-widget").build();
                 //特定のチャンネルのデータを取得
                 YouTube.Search.List search = youtube.search().list(Collections.singletonList("id,snippet"));
                 search.setType(Collections.singletonList("video"));
                 search.setEventType("live");
                 search.setMaxResults(1L);
-                search.setChannelId("UC0g1AE0DOjBYnLhkgoRWN1w");
+                search.setChannelId("UCvzGlP9oQwU--Y0r9id_jnA");
                 SearchListResponse searchResponse = search.execute();
                 //ライブ配信中かどうかを判断する
                 if (searchResponse.getPageInfo().getTotalResults() > 0) {
                     //ライブ配信中なら配信者のアイコン画像を貼り付ける
                     YouTube.Channels.List channelList = youtube.channels().list(Collections.singletonList("snippet"));
-                    channelList.setId(Collections.singletonList("UC0g1AE0DOjBYnLhkgoRWN1w"));
+                    channelList.setId(Collections.singletonList("UCvzGlP9oQwU--Y0r9id_jnA"));
                     ChannelListResponse channelResponse = channelList.execute();
                     Channel targetChannel = channelResponse.getItems().get(0);
                     String urlText = targetChannel.getSnippet().getThumbnails().getHigh().getUrl();
