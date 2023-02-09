@@ -41,7 +41,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
                 Log.d("hello", "world");
                 //YoutubeAPIの初期設定
                 YouTubeRequestInitializer initializer = new YouTubeRequestInitializer("");
-                YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new GsonFactory(), request -> {}).setYouTubeRequestInitializer(initializer).build();
+                YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new GsonFactory(), request -> {}).setYouTubeRequestInitializer(initializer).setApplicationName("youtube-live-widget").build();
                 //特定のチャンネルのデータを取得
                 YouTube.Search.List search = youtube.search().list(Collections.singletonList("id,snippet"));
                 search.setType(Collections.singletonList("video"));
