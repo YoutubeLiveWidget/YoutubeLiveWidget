@@ -4,4 +4,47 @@
     <string name="text_title_off">ライブ配信している人はいません</string>
     <string name="text_button_prev">&#12296;</string>
     <string name="text_button_next">&#12297;</string>
+    <!--  0期生  -->
+    <string name="liver_TokinoSora_id">UCp6993wxpyDPHUpavwDFqgg</string>
+    <string name="liver_Robocosan_id">UCDqI2jOz0weumE8s7paEk6g</string>
+    <string name="liver_AZKi_id">UC0TXe_LYZ4scaW2XMyi5_kw</string>
+    <string name="liver_SakuraMiko_id">UC-hM6YJuNYVAmUWxeIr9FeA</string>
+    <string name="liver_HoshimachiSuisei_id">UC5CwaMl1eIgY8h02uZw7u8A</string>
+    <!--  1期生  -->
+    <string name="liver_YozoraMel_id">UCD8HOxPs4Xvsm8H0ZxXGiBw</string>
+    <string name="liver_AkiRosenthal_id">UCFTLzh12_nrtzqBPsTCqenA</string>
+    <string name="liver_AkaiHaato_id">UC1CfXB_kRs3C-zaeTG3oGyg</string>
+    <string name="liver_ShirakamiFubuki_id">UCdn5BQ06XqgXoAxIhbqw5Rg</string>
+    <string name="liver_NatsuiroMatsuri_id">UCQ0UDLQCjY0rmuxCDE38FGg</string>
+    <!--  2期生  -->
+    <string name="liver_MinatoAqua_id">UC1opHUrw8rvnsadT-iGp7Cg</string>
+    <string name="liver_MurasakiShion_id">UCXTpFs_3PqI41qX2d9tL2Rw</string>
+    <string name="liver_NakiriAyame_id">UC7fk0CB07ly8oSl0aqKkqFg</string>
+    <string name="liver_YuzukiChoco_id">UC1suqwovbL1kzsoaZgFZLKg</string>
+    <string name="liver_OozoraSubaru_id">UCvzGlP9oQwU--Y0r9id_jnA</string>
+    <!--  ホロライブゲーマーズ  -->
+    <string name="liver_OokamiMio_id">UCp-5t9SrOQwXMU7iIjQfARg</string>
+    <string name="liver_NekomataOkayu_id">UCvaTdHTWBGv3MKj3KVqJVCw</string>
+    <string name="liver_InugamiKorone_id">UChAnqc_AY5_I3Px5dig3X1Q</string>
+    <!--  3期生  -->
+    <string name="liver_usadapekora_id">UC1DCedRgGHBdm81E1llLhOQ</string>
+    <string name="liver_ShiranuiFlare_id">UCvInZx9h3jC2JzsIzoOebWg</string>
+    <string name="liver_ShiroganeNoel_id">UCdyqAaZDKHXg4Ahi7VENThQ</string>
+    <string name="liver_HoushouMarine_id">UCCzUftO8KOVkV4wQG1vkUvg</string>
+    <!--  4期生  -->
+    <string name="liver_AmaneKanata_id">UCZlDXzGoo7d44bwdNObFacg</string>
+    <string name="liver_TsunomakiWatame_id">UCqm3BQLlJfvkTsX_hvm0UmA</string>
+    <string name="liver_TokoyamiTowa_id">UC1uv2Oq6kNxgATlCiez59hw</string>
+    <string name="liver_HimemoriLuna_id">UCa9Y57gfeY0Zro_noHRVrnw</string>
+    <!--  5期生  -->
+    <string name="liver_YukihanaLamy_id">UCFKOVgVbGmX65RxO3EtH3iw</string>
+    <string name="liver_MomosuzuNene_id">UCAWSyEs_Io8MtpY3m-zqILA</string>
+    <string name="liver_ShishiroBotan_id">UCUKD-uaobj9jiqB-VXt71mA</string>
+    <string name="liver_OmaruPolka_id">UCK9V2B22uJYu3N7eR_BT9QA</string>
+    <!--  秘密結社holoX  -->
+    <string name="liver_LaplusDarknesss_id">UCENwRMx5Yh42zWpzURebzTw</string>
+    <string name="liver_TakaneLui_id">UCs9_O1tRPMQTHQ-N_L6FU2g</string>
+    <string name="liver_HakuiKoyori_id">UC6eWCld0KwmyHFbAqK3V-Rw</string>
+    <string name="liver_SakamataChloe_id">UCIBY1ollUsauvVi4hW4cumw</string>
+    <string name="liver_kazamairoha_id">UC_vMYWcDjmfdpH6r4TTn1MQ</string>
 </resources>
