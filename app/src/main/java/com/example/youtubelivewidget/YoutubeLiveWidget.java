@@ -38,7 +38,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                Log.d("hello", "world");
+                Log.d("YoutubeLiveWidget", "doInBackground running");
                 //YoutubeAPIの初期設定
                 String apiKey = BuildConfig.YOUTUBE_API_KEY;
                 YouTubeRequestInitializer initializer = new YouTubeRequestInitializer(apiKey);
@@ -48,27 +48,36 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
                 search.setType(Collections.singletonList("video"));
                 search.setEventType("live");
                 search.setMaxResults(1L);
-                search.setChannelId("UCvzGlP9oQwU--Y0r9id_jnA");
+                search.setChannelId("UCFKOVgVbGmX65RxO3EtH3iw");
                 SearchListResponse searchResponse = search.execute();
                 //ライブ配信中かどうかを判断する
                 if (searchResponse.getPageInfo().getTotalResults() > 0) {
                     //ライブ配信中なら配信者のアイコン画像を貼り付ける
                     YouTube.Channels.List channelList = youtube.channels().list(Collections.singletonList("snippet"));
-                    channelList.setId(Collections.singletonList("UCvzGlP9oQwU--Y0r9id_jnA"));
+                    channelList.setId(Collections.singletonList("UCFKOVgVbGmX65RxO3EtH3iw"));
                     ChannelListResponse channelResponse = channelList.execute();
                     Channel targetChannel = channelResponse.getItems().get(0);
                     String urlText = targetChannel.getSnippet().getThumbnails().getHigh().getUrl();
                     URL url = new URL(urlText);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.connect();
-                    views.setImageViewBitmap(R.id.imageView, BitmapFactory.decodeStream(connection.getInputStream()));
-                    appWidgetManager.updateAppWidget(appWidgetId, views);
+                    HttpURLConnection connection = null;
+                    try {
+                        connection = (HttpURLConnection) url.openConnection();
+                        connection.connect();
+                        views.setImageViewBitmap(R.id.imageView, BitmapFactory.decodeStream(connection.getInputStream()));
+                        appWidgetManager.updateAppWidget(appWidgetId, views);
+                    } catch (Exception e) {
+                        Log.d("YoutubeLiveWidget_ConnectApiError", e.toString());
+                        ImageURL = e.getStackTrace().toString();
+                    } finally {
+                        if (connection != null) {
+                            connection.disconnect();
+                        }
+                    }
                 }
-
                 return "";
             } catch (Exception e){
 
-                Log.d("Error", e.toString());
+                Log.d("YoutubeLiveWidget_Error", e.toString());
                 return ImageURL = e.getStackTrace().toString();
             }
         }
