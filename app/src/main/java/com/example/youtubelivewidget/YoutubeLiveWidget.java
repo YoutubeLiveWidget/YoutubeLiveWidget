@@ -39,7 +39,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
 
             //YoutubeAPIの初期設定
             String API_KEY = BuildConfig.YOUTUBE_API_KEY;
-            String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=" + channelId + "&type=video&eventType=live&key=" + API_KEY;
+            String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + channelId + "&maxResults=1&fields=items/snippet/liveBroadcastContent&key=" + API_KEY;
             Boolean channelIsLive = false;
 
             //ライブ配信中かどうかを判断する
@@ -58,8 +58,8 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
                         stringBuilder.append(line);
                     }
                     JSONObject response = new JSONObject(stringBuilder.toString());
-                    int totalResults = response.getJSONObject("pageInfo").getInt("totalResults");
-                    if (totalResults > 0) {
+                    String totalResults = response.getJSONArray("items").getJSONObject(0).getJSONObject("snippet").getString("liveBroadcastContent");
+                    if (totalResults.equals("live")) {
                         Log.d("YoutubeLiveWidget", "配信中");
                         channelIsLive = true;
                     } else {
@@ -96,15 +96,15 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_design);
             new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_TokinoSora_id), views, R.id.imageView_01, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_Robocosan_id), views, R.id.imageView_02, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_YozoraMel_id), views, R.id.imageView_03, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_AkiRosenthal_id), views, R.id.imageView_04, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_AkaiHaato_id), views, R.id.imageView_05, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_ShirakamiFubuki_id), views, R.id.imageView_06, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_NatsuiroMatsuri_id), views, R.id.imageView_07, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_MinatoAqua_id), views, R.id.imageView_08, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_MurasakiShion_id), views, R.id.imageView_09, appWidgetId).execute();
-            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_NakiriAyame_id), views, R.id.imageView_10, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_Robocosan_id), views, R.id.imageView_02, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_YozoraMel_id), views, R.id.imageView_03, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_AkiRosenthal_id), views, R.id.imageView_04, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_AkaiHaato_id), views, R.id.imageView_05, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_ShirakamiFubuki_id), views, R.id.imageView_06, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_NatsuiroMatsuri_id), views, R.id.imageView_07, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_MinatoAqua_id), views, R.id.imageView_08, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_MurasakiShion_id), views, R.id.imageView_09, appWidgetId).execute();
+//            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_NakiriAyame_id), views, R.id.imageView_10, appWidgetId).execute();
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
