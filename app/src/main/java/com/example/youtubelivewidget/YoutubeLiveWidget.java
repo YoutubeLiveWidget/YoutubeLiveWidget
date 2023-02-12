@@ -1,9 +1,13 @@
 package com.example.youtubelivewidget;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -93,7 +97,18 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        int updatePeriodMillis = 30;//何分枚処理（30分）
+        updatePeriodMillis *= 60 * 1000;
         for (int appWidgetId : appWidgetIds) {
+            
+            Intent intent = new Intent(context, YoutubeLiveWidget.class);
+            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), updatePeriodMillis, pendingIntent);
+            
+            
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_design);
             new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_TokinoSora_id), views, R.id.imageView_01, appWidgetId).execute();
 //            new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_Robocosan_id), views, R.id.imageView_02, appWidgetId).execute();
