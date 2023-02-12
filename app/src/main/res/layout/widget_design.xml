@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/yozoramel" />
+                android:src="@drawable/azki" />
 
             <ImageView
                 android:id="@+id/imageView_04"
@@ -99,7 +99,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/akirosenthal" />
+                android:src="@drawable/sakuramiko" />
 
             <ImageView
                 android:id="@+id/imageView_05"
@@ -108,7 +108,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/akaihaato" />
+                android:src="@drawable/hoshimachisuisei" />
 
         </LinearLayout>
 
@@ -125,7 +125,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/natsuiromatsuri" />
+                android:src="@drawable/yozoramel" />
 
             <ImageView
                 android:id="@+id/imageView_06"
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/shirakamifubuki" />
+                android:src="@drawable/akirosenthal" />
 
             <ImageView
                 android:id="@+id/imageView_08"
@@ -143,7 +143,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/minatoaqua" />
+                android:src="@drawable/akaihaato" />
 
             <ImageView
                 android:id="@+id/imageView_09"
@@ -152,7 +152,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/murasakishion" />
+                android:src="@drawable/shirakamifubuki" />
 
             <ImageView
                 android:id="@+id/imageView_10"
@@ -161,7 +161,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/talent"
-                android:src="@drawable/nakiriayame" />
+                android:src="@drawable/natsuiromatsuri" />
         </LinearLayout>
 
     </LinearLayout>
