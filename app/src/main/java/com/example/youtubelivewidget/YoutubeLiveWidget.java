@@ -105,17 +105,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        int updatePeriodMillis = 30;//何分枚処理（30分）
-        updatePeriodMillis *= 60 * 1000;
         for (int appWidgetId : appWidgetIds) {
-
-            Intent intent = new Intent(context, YoutubeLiveWidget.class);
-            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), updatePeriodMillis, pendingIntent);
-
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_design);
             new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_TokinoSora_id), views, R.id.imageView_01, appWidgetId).execute();
@@ -129,11 +119,25 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
             new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_ShirakamiFubuki_id), views, R.id.imageView_09, appWidgetId).execute();
             new YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_NatsuiroMatsuri_id), views, R.id.imageView_10, appWidgetId).execute();
             appWidgetManager.updateAppWidget(appWidgetId, views);
+
+            // 10分ごとにonUpdateを呼び出すための処理
+            Intent intent = new Intent(context, YoutubeLiveWidget.class);
+            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 60*1000*10, pendingIntent);
         }
     }
 
     @Override
     public void onDisabled(Context context) {
-
+        // onUpdateの呼び出しを停止するためにアラームマネージャーをキャンセルする
+        Intent intent = new Intent(context, YoutubeLiveWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        super.onDisabled(context);
     }
 }
