@@ -32,6 +32,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
 
         String liveUrl;
 
+        //YoutubeAsyncTask(context, context.getResources().getString(R.string.liver_TokinoSora_id), views, R.id.imageView_01, appWidgetId).execute();
         YoutubeAsyncTask(Context context, String channelId, RemoteViews views, int imageViewId, int appWidgetId) {
             this.context = context;
             this.views = views;
@@ -47,7 +48,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
             //YoutubeAPIの初期設定
             String API_KEY = BuildConfig.YOUTUBE_API_KEY;
             String url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=" + channelId + "&type=video&eventType=live&key=" + API_KEY;
-            Boolean channelIsLive = false;
+            boolean channelIsLive = false;
 
             //ライブ配信中かどうかを判断する
             try {
@@ -89,7 +90,7 @@ public class YoutubeLiveWidget extends AppWidgetProvider {
                 views.setInt(imageViewId, "setAlpha", 255);
                 Intent youtubeLiveIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(liveUrl));
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, youtubeLiveIntent, 0);
-                views.setOnClickPendingIntent(R.id.imageView_02, pendingIntent);
+                views.setOnClickPendingIntent(imageViewId, pendingIntent);
             } else {
                 // 配信されていない場合は、背景色を白色にする
                 views.setInt(imageViewId, "setAlpha", 100);
